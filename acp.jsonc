@@ -1,0 +1,80 @@
+// Configuracion de ACP v2 — copia este archivo a:
+//   ~/.config/opencode/acp.jsonc          (global)
+//   <proyecto>/.opencode/acp.jsonc        (solo ese proyecto)
+//
+// Todo es opcional. Sin archivo se usa el preset "balanced".
+// Precedencia: defaults < global < proyecto < options del plugin en opencode.json.
+
+{
+  // Apaga el plugin sin desinstalarlo.
+  "enabled": true,
+
+  // Logs "[acp]" en ~/.local/share/opencode/log/opencode.log
+  "debug": false,
+
+  // Anade <tool_hash>xxxxxx</tool_hash> al final de cada salida de herramienta.
+  // Necesario para que context_prune pueda referenciarlas.
+  "visibleHashes": true,
+
+  // "compact"  = poda agresiva
+  // "balanced" = equilibrio (recomendado)
+  // "verbose"  = no poda automatico, solo manual
+  "preset": "balanced",
+
+  // Herramientas que nunca se podan automaticamente.
+  "protectedTools": [
+    "context_prune",
+    "task",
+    "todowrite",
+    "todoread",
+    "todo",
+    "batch",
+    "write",
+    "edit",
+    "apply_patch"
+  ],
+
+  // Archivos cuyas salidas no se podan (secretos y configs que conviene releer).
+  "protectedFilePatterns": [
+    "**/.env",
+    "**/.env.*",
+    "**/credentials.json",
+    "**/secrets.json",
+    "**/*.pem",
+    "**/*.key",
+    "**/package.json",
+    "**/tsconfig.json",
+    "**/pyproject.toml",
+    "**/Cargo.toml"
+  ],
+
+  // Las 8 estrategias automaticas.
+  "strategies": {
+    "identicalCalls": true,   // misma llamada, mismos argumentos
+    "oneFileOneView": true,   // solo la ultima operacion sobre cada archivo
+    "stateQueries": true,     // ls, pwd, git status, grep... ya superados
+    "sourceUrls": true,       // misma URL consultada antes
+    "todos": true,            // estados de tareas reemplazados
+    "snapshots": true,        // checkpoints/reverts superados
+    "retryAttempts": true,    // error de un intento que luego funciono
+    "pruneToolInputs": true,  // content/patch/diff gigantes en los argumentos
+
+    // Extras, apagados por defecto:
+    "truncateOldErrors": false,
+    "purgeErrors": { "enabled": false, "turns": 4 }
+  },
+
+  // Que se deja intacto.
+  "protection": {
+    "recentTurns": 2,      // turnos de usuario recientes sin tocar
+    "keepLastResults": 4,  // ultimas N salidas siempre completas
+    "maxStubTokens": 4000  // reservado para futuras heuristicas
+  },
+
+  // Umbrales de presion de contexto (fraccion de la ventana del modelo).
+  "tokens": {
+    "warningThreshold": 0.7,
+    "criticalThreshold": 0.85,
+    "fallbackContextWindow": 200000
+  }
+}

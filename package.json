@@ -1,0 +1,11 @@
+{
+  "name": "opencode-acp-v2",
+  "version": "1.0.0",
+  "description": "Agentic Context Pruning para OpenCode V2: deduplica y poda contexto automaticamente.",
+  "type": "module",
+  "main": "index.js",
+  "exports": "./index.js",
+  "license": "MIT",
+  "private": true,
+  "keywords": ["opencode", "opencode-plugin", "context", "pruning", "tokens"]
+}
