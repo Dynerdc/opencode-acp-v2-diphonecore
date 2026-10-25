@@ -3,6 +3,12 @@
 Port completo del plugin [`@tuanhung303/opencode-acp`](https://github.com/tuanhung303/opencode-agent-context-pruning)
 (que solo funciona en OpenCode V1) sobre la API de plugins de **OpenCode V2**.
 
+> **Port no oficial.** Este proyecto no lo mantiene tuanhung303, ni esta afiliado ni
+> respaldado por el. Todo el diseno de ACP —las 8 estrategias, las reglas de proteccion,
+> la herramienta `context_prune` y los valores por defecto— es **trabajo suyo**. Aqui solo
+> se reescribio la capa de integracion para que funcione en V2. Si el proyecto original te
+> resulta util, pasate por su repositorio y dale una estrella.
+
 Reduce el gasto de contexto de forma automática: detecta salidas de herramientas que ya
 no aportan, las reemplaza por stubs de una línea y deja que el agente pode a mano lo que
 quiera con la herramienta `context_prune`.
@@ -314,16 +320,43 @@ acp-v2/
 
 ---
 
-## Creditos y licencia
+## Origen, credito y licencia
 
-Diseno original, estrategias y reglas: **tuanhung303**,
-[opencode-agent-context-pruning](https://github.com/tuanhung303/opencode-agent-context-pruning).
+**Esto no es un proyecto oficial.** No esta afiliado ni respaldado por el autor original.
 
-Este port a V2 es una reescritura de la capa de integracion basada en el trabajo original.
+### Obra original
 
-Licencia **MIT**. Consulta [`LICENSE.txt`](./LICENSE.txt).
+**Agentic Context Pruning (ACP)** — de **tuanhung303**:
+
+- Repositorio: <https://github.com/tuanhung303/opencode-agent-context-pruning>
+- Paquete npm: `@tuanhung303/opencode-acp` v3.0.15
+- Licencia: **MIT**, `Copyright (c) 2025 opencode-acp`
+
+De ahi salieron el diseno, las estrategias, las reglas y los valores por defecto. El port
+se hizo leyendo el paquete publicado (su `dist/`, su README y sus documentos de estrategias
+y API), no adivinando.
+
+### Que es de quien
+
+| Del original (MIT, tuanhung303) | Nuevo en este port (Dynerdc) |
+|---|---|
+| Las 8 estrategias de poda y sus reglas | `setup(ctx)` y todo el cableado de V2 |
+| La herramienta `context_prune` y su semantica | Registro via `ctx.tool.transform` |
+| Herramientas y archivos protegidos por defecto | Comando `/acp` con `ctx.session.synthetic` |
+| Umbrales, presets y formato de hash | Estado con `ctx.storage`, sin dependencias |
+| La idea de deduplicar contexto | Medida de presion sobre toda la conversacion |
+
+### Licencia
+
+**MIT**, la misma del original. El aviso de copyright de tuanhung303 se conserva en
+[`LICENSE.txt`](./LICENSE.txt), que es exactamente lo que la licencia MIT exige al
+distribuir una obra derivada. Puedes usar, copiar, modificar y redistribuir este port
+siempre que mantengas ese aviso.
 
 ```
-Copyright (c) 2025 opencode-acp (diseno original y estrategias de ACP)
-Copyright (c) 2026 Dynerdc (port a OpenCode V2)
+Copyright (c) 2025 opencode-acp (tuanhung303) - ACP original
+Copyright (c) 2026 Dynerdc - port a OpenCode V2
 ```
+
+El `package.json` lleva `"private": true` a proposito: evita publicar el port en npm por
+accidente bajo otro nombre. Para distribuirlo, usa el repositorio o el `.zip`.

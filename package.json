@@ -1,11 +1,29 @@
 {
   "name": "opencode-acp-v2",
   "version": "1.0.0",
-  "description": "Agentic Context Pruning para OpenCode V2: deduplica y poda contexto automaticamente.",
+  "description": "Port no oficial de ACP (Agentic Context Pruning) de tuanhung303 a OpenCode V2: deduplica y poda contexto automaticamente.",
   "type": "module",
   "main": "index.js",
   "exports": "./index.js",
   "license": "MIT",
-  "private": true,
-  "keywords": ["opencode", "opencode-plugin", "context", "pruning", "tokens"]
+  "author": "tuanhung303 - ACP original (https://github.com/tuanhung303)",
+  "contributors": [
+    "Dynerdc - port a OpenCode V2 (https://github.com/Dynerdc)"
+  ],
+  "homepage": "https://github.com/tuanhung303/opencode-agent-context-pruning",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dynerdc/opencode-acp-v2-diphonecore.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Dynerdc/opencode-acp-v2-diphonecore/issues"
+  },
+  "keywords": [
+    "opencode",
+    "opencode-plugin",
+    "context",
+    "pruning",
+    "tokens"
+  ],
+  "private": true
 }
