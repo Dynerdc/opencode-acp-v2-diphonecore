@@ -308,6 +308,7 @@ acp-v2/
 ├── test/                 22 pruebas con node:test
 ├── acp.jsonc             config de ejemplo comentada
 ├── install.ps1           instalador para Windows
+├── LICENSE.txt           licencia MIT
 └── package.json
 ```
 
@@ -315,8 +316,14 @@ acp-v2/
 
 ## Creditos y licencia
 
-Diseno original, estrategias y reglas: **tuanhung303**, 
+Diseno original, estrategias y reglas: **tuanhung303**,
 [opencode-agent-context-pruning](https://github.com/tuanhung303/opencode-agent-context-pruning).
 
-Este port a V2 es una reescritura de la capa de integracion basada en el trabajo original. 
-Licencia **AGPL-3.0** (heredada del proyecto original). Consulta el archivo `LICENSE` para más detalles.
+Este port a V2 es una reescritura de la capa de integracion basada en el trabajo original.
+
+Licencia **MIT**. Consulta [`LICENSE.txt`](./LICENSE.txt).
+
+```
+Copyright (c) 2025 opencode-acp (diseno original y estrategias de ACP)
+Copyright (c) 2026 Dynerdc (port a OpenCode V2)
+```
